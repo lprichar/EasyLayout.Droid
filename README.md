@@ -84,15 +84,19 @@ relativeLayout.ConstrainLayout(() =>
     );
 ````
 
-As mentioned previously 50 will be assumed to be in dp and will be auto-converted to pixes.  Also arbitrary properties such as SomeHeight will need the .ToConst() extension method applied in order to tell EasyLayout.Droid that they should be treated as constants.
+As mentioned previously 50 will be assumed to be in dp and will be auto-converted to pixels.  Also arbitrary properties such as SomeHeight will need the .ToConst() extension method applied in order to tell EasyLayout.Droid that they should be treated as constants.
 
 ## Installation
 
-If you want to add this to your project you can either install via NuGet (safer):
+If you want to add this to your project you can either [install via NuGet](https://www.nuget.org/packages/EasyLayout.Droid/) (safer):
 
 `Install-Package EasyLayout.Droid`
 
 or if you think it's perfect as is (you don't want updates) you can copy [EasyLayoutDroid.cs](https://github.com/lprichar/EasyLayout.Droid/blob/master/EasyLayout.Droid/EasyLayout.cs) into your source.
+
+## More
+
+For more information read [Introducing EasyLayout.Droid](http://www.leerichardson.com/2017/01/introducing-easylayoutdroid-for-simpler.html).
 
 ## License
 

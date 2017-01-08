@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D25953B-D06F-4696-A83F-BE6C9BAB88E8}"
 	ProjectSection(SolutionItems) = preProject
 		EasyLayout.Droid\EasyLayout.Droid.nuspec = EasyLayout.Droid\EasyLayout.Droid.nuspec
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
