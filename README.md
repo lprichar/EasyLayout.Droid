@@ -44,9 +44,10 @@ layoutParams.TopMargin = DpToPx(20);
 _image2.LayoutParams = layoutParams;
 ````
 
-There's a couple of gotchas.  First if you set the TopMargin to 20, then Android assumes you mean pixels not device independent pixels.  To fix that you need to remember to call a function like DpToPx().  
+There's a couple of gotchas.  
 
-Second, your relative view (image1) needs to have an Id.  If you forget to set it there's no error, it just does strange layout things.
+1. If you set the TopMargin to 20, then Android assumes you mean pixels not device independent pixels.  To fix that you need to remember to call a function like DpToPx().  
+1. Your relative view (image1) needs to have an Id.  If you forget to set it there's no error, it just does strange layout things.
 
 EasyLayout.Droid replaces the code above with:
 
@@ -59,7 +60,8 @@ relativeLayout.ConstrainLayout(() =>
 
 That's less code and easier to read plus there's some other small benefits.  
 
-If you forget to add an Id to _image1, EasyLayout.Droid will throw a helpful runtime error.  Also, EasyLayout.Droid always assumes every number is in Dp, so it automatically converts all literals for you.
+* If you forget to add an Id to _image1, EasyLayout.Droid will automatically add one for you.  
+* EasyLayout.Droid always assumes every number is in Dp, so it automatically converts all literals for you.
 
 Incidentally, GetCenterX() is one of a couple of new extension methods along with GetCenterY() and GetCenter().
 

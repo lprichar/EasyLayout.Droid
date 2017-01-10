@@ -212,7 +212,7 @@ namespace EasyLayout.Droid
             }
         }
 
-        private static int _idCounter;
+        private static int _idCounter = 1;
 
         public static int GetCenterX(this View view)
         {
