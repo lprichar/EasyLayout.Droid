@@ -29,6 +29,7 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.OS;
 
 namespace EasyLayout.Droid
 {
@@ -211,6 +212,8 @@ namespace EasyLayout.Droid
             }
         }
 
+        private static int _idCounter;
+
         public static int GetCenterX(this View view)
         {
             return 0;
@@ -238,6 +241,7 @@ namespace EasyLayout.Droid
 
         public static void ConstrainLayout(this RelativeLayout relativeLayout, Expression<Func<bool>> constraints)
         {
+            _idCounter = 1;
             var constraintExpressions = FindConstraints(constraints.Body);
             var viewAndRule = ConvertConstraintsToRules(relativeLayout, constraintExpressions);
             UpdateLayoutParamsWithRules(viewAndRule);
@@ -394,7 +398,7 @@ namespace EasyLayout.Droid
 
             if (view != null && !isParent && view.Id == -1)
             {
-                throw new Exception($"{memberName} appears on the right-hand side of an expression, but does not appear to have its Id property set.");
+                view.Id = GenerateViewId();
             }
 
             return new RightExpression
@@ -417,6 +421,17 @@ namespace EasyLayout.Droid
                 throw new NotSupportedException("Constraints only apply to views.");
             }
             return view;
+        }
+
+        private static int GenerateViewId()
+        {
+            // API level 17+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr1)
+            {
+                return View.GenerateViewId();
+            }
+
+            return _idCounter++;
         }
 
         private static int ConstantValue(Expression expr)
