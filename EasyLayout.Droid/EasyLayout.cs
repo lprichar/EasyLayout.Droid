@@ -107,7 +107,7 @@ namespace EasyLayout.Droid
                     case Position.Baseline:
                         return new Margin { Top = constantPx };
                     case Position.Right:
-                        return new Margin { Right = constantPx };
+                        return new Margin { Right = -constantPx };
                     case Position.Bottom:
                         return new Margin { Bottom = constantPx };
                     case Position.Left:

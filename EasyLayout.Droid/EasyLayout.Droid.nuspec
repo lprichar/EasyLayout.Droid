@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EasyLayout.Droid</id>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <title>EasyLayout.Droid</title>
         <authors>Lee P Richardson</authors>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
