@@ -8,6 +8,7 @@ namespace EasyLayout.Droid.Sample
         public static readonly Color Red = Color.Rgb(227, 35, 34);
         public static readonly Color Orange = Color.Rgb(241, 142, 28);
         public static readonly Color Yellow = Color.Rgb(244, 229, 0);
+        public static readonly Color Gold = Color.Rgb(253, 198, 11);
         public static readonly Color Green = Color.Rgb(0, 142, 91);
         public static readonly Color DarkBlue = Color.Rgb(42, 113, 176);
         public static readonly Color LightBlue = Color.Rgb(6, 150, 187);

@@ -18,6 +18,7 @@ namespace EasyLayout.Droid.Sample
         private TextView _upperLeft;
         private TextView _lowerLeft;
         private TextView _lowerRight;
+        private TextView _topTop;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -31,6 +32,7 @@ namespace EasyLayout.Droid.Sample
         private void AddViews()
         {
             _relativeLayout = ViewUtils.AddRelativeLayout(this);
+            _topTop = _relativeLayout.AddTextView(this, "this.GetCenterX() == _layoutView.GetCenterX()", Colors.Gold, Colors.White);
             _center = _relativeLayout.AddTextView(this, "this.GetCenter() == \nrelativeLayout.GetCenter()", Colors.DarkGrey, Colors.White);
             _top = _relativeLayout.AddTextView(this, "this.Bottom == \n_center.Top - 20", Colors.Yellow, Colors.DarkGrey);
             _right = _relativeLayout.AddTextView(this, "this.Left == \n_center.Right + 20", Colors.Red, Colors.White);
@@ -46,6 +48,9 @@ namespace EasyLayout.Droid.Sample
         {
             _relativeLayout.ConstrainLayout(() =>
                 _center.GetCenter() == _relativeLayout.GetCenter() &&
+
+                _topTop.GetCenterX() == _relativeLayout.GetCenterX() &&
+                _topTop.Top == _relativeLayout.Top + 20 &&
 
                 _top.Left == _center.Left &&
                 _top.Right == _center.Right &&
