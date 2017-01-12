@@ -33,7 +33,7 @@ namespace EasyLayout.Droid.Sample
         private void AddViews()
         {
             _relativeLayout = ViewUtils.AddRelativeLayout(this);
-            _topTop = _relativeLayout.AddTextView(this, "this.GetCenterX() == _layoutView.GetCenterX()", Colors.Gold, Colors.DarkGrey);
+            _topTop = _relativeLayout.AddTextView(this, "this.GetCenterX() == _layoutView.GetCenterX() \n&& this.Top == relativeLayout.Top", Colors.Gold, Colors.DarkGrey);
             _center = _relativeLayout.AddTextView(this, "this.GetCenter() == \nrelativeLayout.GetCenter()", Colors.DarkGrey, Colors.White);
             _top = _relativeLayout.AddTextView(this, "this.Bottom == \n_center.Top - 20", Colors.Yellow, Colors.DarkGrey);
             _upperLeft = _relativeLayout.AddTextView(this, "this.Height == 40 &&\nthis.Width == 140", Colors.YellowGreen, Colors.White);
@@ -43,7 +43,7 @@ namespace EasyLayout.Droid.Sample
             _lowerRight = _relativeLayout.AddTextView(this, "this.Top == _bottom.Top &&\nthis.Left == _right.Left", Colors.BluePurple, Colors.White);
             _right = _relativeLayout.AddTextView(this, "this.Left == \n_center.Right + 20", Colors.Red, Colors.White);
             _upperRight = _relativeLayout.AddTextView(this, "this.Baseline ==\n_top.Baseline", Colors.Orange, Colors.White);
-            _bottomBottom = _relativeLayout.AddTextView(this, "this.Height == ViewModel.Height.ToConst() && \nthis.Bottom == relativeLayout.Bottom - 20", Colors.Purple, Colors.White);
+            _bottomBottom = _relativeLayout.AddTextView(this, "this.Height == ViewModel.Height.ToConst() && \nthis.Width == relativeLayout.Width", Colors.Purple, Colors.White);
         }
 
         private void ConstrainLayout()
@@ -52,7 +52,8 @@ namespace EasyLayout.Droid.Sample
                 _center.GetCenter() == _relativeLayout.GetCenter() &&
 
                 _topTop.GetCenterX() == _relativeLayout.GetCenterX() &&
-                _topTop.Top == _relativeLayout.Top + 20 &&
+                _topTop.Top == _relativeLayout.Top &&
+                _topTop.Height == 40 &&
 
                 _top.Left == _center.Left &&
                 _top.Right == _center.Right &&
@@ -86,9 +87,10 @@ namespace EasyLayout.Droid.Sample
                 _lowerRight.Top == _bottom.Top &&
                 _lowerRight.Left == _right.Left &&
 
-                _bottomBottom.Bottom == _relativeLayout.Bottom - 20 &&
+                _bottomBottom.Bottom == _relativeLayout.Bottom &&
                 _bottomBottom.GetCenterX() == _relativeLayout.GetCenterX() &&
-                _bottomBottom.Height == ViewModel.Height.ToConst()
+                _bottomBottom.Height == ViewModel.Height.ToConst() &&
+                _bottomBottom.Width == _relativeLayout.Width
                 );
         }
     }

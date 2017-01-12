@@ -32,6 +32,7 @@ namespace EasyLayout.Droid.Sample
             textView.Text = text;
             textView.SetBackgroundColor(background);
             textView.SetTextColor(textColor);
+            textView.Gravity = GravityFlags.CenterHorizontal;
             return textView;
         }
     }
