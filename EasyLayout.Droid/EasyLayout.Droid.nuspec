@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EasyLayout.Droid</id>
-        <version>1.0.3</version>
+        <version>1.0.4</version>
         <title>EasyLayout.Droid</title>
         <authors>Lee P Richardson</authors>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
@@ -13,6 +13,7 @@
         <copyright>Lee P Richardson 2017</copyright>
         <language />
         <tags>Xamarin Android RelativeLayout EasyLayout</tags>
+        <releaseNotes>Allow specifying item.Width == relativeLayout.Width</releaseNotes>
     </metadata>
     <files>
       <file src="bin\Release\*.dll" target="lib\MonoAndroid10" />
