@@ -24,8 +24,8 @@ namespace EasyLayout.Droid.Sample
         private void AddViews()
         {
             _relativeLayout = ViewUtils.AddRelativeLayout(this);
-            _center = _relativeLayout.AddTextView(this, "_center.GetCenter() == \nrelativeLayout.GetCenter()", Colors.DarkGrey, Colors.White);
-            _top = _relativeLayout.AddTextView(this, "_top.Bottom == \n_center.Top + 20", Colors.Yellow, Colors.Black);
+            _center = _relativeLayout.AddTextView(this, "this.GetCenter() == \nrelativeLayout.GetCenter()", Colors.DarkGrey, Colors.White);
+            _top = _relativeLayout.AddTextView(this, "this.Bottom == \n_center.Top - 20", Colors.Yellow, Colors.Black);
         }
 
         private void ConstrainLayout()
@@ -35,7 +35,7 @@ namespace EasyLayout.Droid.Sample
 
                 _top.Left == _center.Left &&
                 _top.Right == _center.Right &&
-                _top.Bottom == _center.Top + 20
+                _top.Bottom == _center.Top - 20
                 );
         }
     }
