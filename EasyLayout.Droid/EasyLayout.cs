@@ -173,7 +173,7 @@ namespace EasyLayout.Droid
                 return (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, displayMetrics);
             }
 
-            private static LayoutRules GetLayoutRuleForParent(Position childPosition, Position parentPosition, string childName)
+            private static LayoutRules? GetLayoutRuleForParent(Position childPosition, Position parentPosition, string childName)
             {
                 if (childPosition == Position.Top && parentPosition == Position.Top)
                     return LayoutRules.AlignParentTop;
@@ -189,6 +189,10 @@ namespace EasyLayout.Droid
                     return LayoutRules.CenterVertical;
                 if (childPosition == Position.Center && parentPosition == Position.Center)
                     return LayoutRules.CenterInParent;
+                if (childPosition == Position.Width && parentPosition == Position.Width)
+                    return null;
+                if (childPosition == Position.Height && parentPosition == Position.Height)
+                    return null;
                 throw new Exception($"Unsupported parent positioning combination: {childName}.{childPosition} with parent.{parentPosition}");
             }
 
@@ -198,6 +202,10 @@ namespace EasyLayout.Droid
                     Width = DpToPx(leftExpression.View.Context, rightExpression.Constant.Value);
                 if (leftExpression.Position == Position.Height && rightExpression.IsConstant && rightExpression.Constant.HasValue)
                     Height = DpToPx(leftExpression.View.Context, rightExpression.Constant.Value);
+                if (leftExpression.Position == Position.Width && rightExpression.IsParent && rightExpression.Constant == null)
+                    Width = ViewGroup.LayoutParams.MatchParent;
+                if (leftExpression.Position == Position.Height && rightExpression.IsParent && rightExpression.Constant == null)
+                    Height = ViewGroup.LayoutParams.MatchParent;
             }
 
             public void Initialize(LeftExpression leftExpression, RightExpression rightExpression)
