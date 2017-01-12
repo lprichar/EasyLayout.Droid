@@ -116,6 +116,10 @@ namespace EasyLayout.Droid
                         return new Margin();
                     case Position.Height:
                         return new Margin();
+                    case Position.CenterX:
+                        return constantPx > 0 ? 
+                            new Margin {Left = constantPx} : 
+                            new Margin() {Right = -constantPx};
                     default:
                         throw new ArgumentException($"Constant expressions with {rightExpression.Position} are currently unsupported.");
                 }
