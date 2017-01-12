@@ -5,7 +5,7 @@ EasyLayout.Droid makes it easier to read, write, and maintain relative layouts i
 
 The best place to get started is to take a look at the [sample project](https://github.com/lprichar/EasyLayout.Droid/blob/master/EasyLayout.Droid.Sample/MainActivity.cs).
 
-![Sample Project Screenshot](/SampleProject.png)
+![Sample Project Screenshot](SampleProject.PNG)
 
 ## Example 1 - Parent Align
 
