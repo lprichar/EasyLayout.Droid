@@ -1,10 +1,6 @@
-﻿using System;
-using Android.App;
-using Android.Content;
-using Android.Graphics;
+﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using Android.Views;
 
 namespace EasyLayout.Droid.Sample
 {
@@ -22,9 +18,6 @@ namespace EasyLayout.Droid.Sample
 
             AddViews();
             ConstrainLayout();
-
-            // Set our view from the "main" layout resource
-            // SetContentView (Resource.Layout.Main);
             SetContentView(_relativeLayout);
         }
 
@@ -45,49 +38,6 @@ namespace EasyLayout.Droid.Sample
                 _top.Bottom == _center.Top + 20
                 );
         }
-    }
-
-    public static class ViewUtils
-    {
-        public static RelativeLayout AddRelativeLayout(Context context)
-        {
-            var relativeLayout = new RelativeLayout(context)
-            {
-                LayoutParameters = new RelativeLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MatchParent,
-                    ViewGroup.LayoutParams.MatchParent)
-            };
-            return relativeLayout;
-        }
-
-        public static T Add<T>(this ViewGroup parent, Context context) where T : View
-        {
-            var child = (T)Activator.CreateInstance(typeof(T), context);
-            parent.AddView(child);
-            return child;
-        }
-
-        public static TextView AddTextView(this ViewGroup parent, Context context, string text, Color background, Color textColor)
-        {
-            var textView = parent.Add<TextView>(context);
-            textView.Text = text;
-            textView.SetBackgroundColor(background);
-            textView.SetTextColor(textColor);
-            return textView;
-        }
-    }
-
-    public static class Colors
-    {
-        public static readonly Color White = Color.Rgb(255, 255, 255);
-        public static readonly Color Red = Color.Rgb(227, 35, 34);
-        public static readonly Color Orange = Color.Rgb(241, 142, 28);
-        public static readonly Color Yellow = Color.Rgb(244, 229, 0);
-        public static readonly Color Green = Color.Rgb(0, 142, 91);
-        public static readonly Color Blue = Color.Rgb(42, 113, 176);
-        public static readonly Color Purple = Color.Rgb(109, 57, 139);
-        public static readonly Color DarkGrey = Color.Rgb(20, 20, 20);
-        public static readonly Color Black = Color.Rgb(0, 0, 0);
     }
 }
 
