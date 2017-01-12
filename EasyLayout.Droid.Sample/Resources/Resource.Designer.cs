@@ -26,6 +26,8 @@ namespace EasyLayout.Droid.Sample
 		
 		public static void UpdateIdValues()
 		{
+			global::EasyLayout.Droid.Resource.String.ApplicationName = global::EasyLayout.Droid.Sample.Resource.String.ApplicationName;
+			global::EasyLayout.Droid.Resource.String.Hello = global::EasyLayout.Droid.Sample.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
