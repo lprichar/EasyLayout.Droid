@@ -427,7 +427,7 @@ namespace EasyLayout.Droid
         {
             var memberExpression = expression as MemberExpression;
             if (memberExpression != null) return memberExpression.Member.Name;
-            return expression.ToString();
+            return expression?.ToString();
         }
 
         private static View GetView(Expression viewExpr)
