@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Colors.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\Data.cs" />
     <Compile Include="Models\MainViewModel.cs" />
     <Compile Include="Views\LayoutExampleActivity.cs" />
     <Compile Include="Views\ViewProductsActivity.cs" />

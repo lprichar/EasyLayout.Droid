@@ -28,7 +28,7 @@ namespace EasyLayout.Droid.Sample
         {
             _relativeLayout = ViewUtils.AddRelativeLayout(this);
             _listView = _relativeLayout.Add<ListView>();
-            List<Product> items = GetItems();
+            List<Product> items = Data.GetProducts();
             _adapter = new ProductAdapter(this, items);
             _listView.Adapter = _adapter;
         }
@@ -42,23 +42,6 @@ namespace EasyLayout.Droid.Sample
                 _listView.Bottom == _relativeLayout.Bottom
                 );
         }
-
-        private List<Product> GetItems()
-        {
-            var list = new List<Product>();
-            for (int i = 0; i < 100; i++)
-            {
-                var item = new Product
-                {
-                    Id = i,
-                    Title = $"Item #{i}",
-                    Amount = 500.99M + i * .01M
-                };
-                list.Add(item);
-            }
-            return list;
-        }
-
     }
 
     internal class ProductAdapter : BaseAdapter<Product>
@@ -112,14 +95,18 @@ namespace EasyLayout.Droid.Sample
         private void AddViews()
         {
             _titleText = this.Add<TextView>();
+            _titleText.SetTextColor(Colors.YellowGreen);
+
             _dollarText = AddDollarText(this);
             _amountText = this.Add<TextView>();
+            _amountText.SetTextColor(Colors.Green);
         }
 
         private static TextView AddDollarText(ViewGroup parent)
         {
             var dollarText = parent.Add<TextView>();
             dollarText.Text = "$";
+            dollarText.SetTextColor(Colors.Green);
             dollarText.TextSize = 8;
             return dollarText;
         }
@@ -129,11 +116,9 @@ namespace EasyLayout.Droid.Sample
             relativeLayout.ConstrainLayout(() =>
                 _titleText.Left == Left + 20
                 && _titleText.Top == Top + 10
-                && _titleText.Bottom == Bottom - 20
 
                 && _amountText.Right == Right - 20
                 && _amountText.Top == Top + 10
-                && _amountText.Bottom == Bottom - 20
 
                 && _dollarText.Right == _amountText.Left
                 && _dollarText.Top == _amountText.Top
