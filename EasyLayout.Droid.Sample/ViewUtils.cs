@@ -1,6 +1,7 @@
 using System;
 using Android.Content;
 using Android.Graphics;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 
@@ -8,6 +9,12 @@ namespace EasyLayout.Droid.Sample
 {
     public static class ViewUtils
     {
+        public static int DpToPx(Context context, float dp)
+        {
+            DisplayMetrics displayMetrics = context.Resources.DisplayMetrics;
+            return (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, displayMetrics);
+        }
+
         public static RelativeLayout AddRelativeLayout(Context context)
         {
             var relativeLayout = new RelativeLayout(context)

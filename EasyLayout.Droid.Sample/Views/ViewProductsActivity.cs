@@ -97,8 +97,16 @@ namespace EasyLayout.Droid.Sample
 
         public ProductRowView(Context context) : base(context)
         {
+            SetViewProperties();
             AddViews();
             ConstrainLayout(this);
+        }
+
+        private void SetViewProperties()
+        {
+            var height = ViewUtils.DpToPx(Context, 40);
+            var width = ViewGroup.LayoutParams.MatchParent;
+            LayoutParameters = new ViewGroup.LayoutParams(width, height);
         }
 
         private void AddViews()
@@ -119,13 +127,13 @@ namespace EasyLayout.Droid.Sample
         private void ConstrainLayout(RelativeLayout relativeLayout)
         {
             relativeLayout.ConstrainLayout(() =>
-                _titleText.Left == relativeLayout.Left
-                && _titleText.Top == relativeLayout.Top
-                && _titleText.Bottom == relativeLayout.Bottom
+                _titleText.Left == Left + 20
+                && _titleText.Top == Top + 10
+                && _titleText.Bottom == Bottom - 20
 
-                && _amountText.Right == relativeLayout.Right
-                && _amountText.Top == relativeLayout.Top
-                && _amountText.Bottom == relativeLayout.Bottom
+                && _amountText.Right == Right - 20
+                && _amountText.Top == Top + 10
+                && _amountText.Bottom == Bottom - 20
 
                 && _dollarText.Right == _amountText.Left
                 && _dollarText.Top == _amountText.Top
