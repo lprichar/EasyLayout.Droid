@@ -347,7 +347,7 @@ namespace EasyLayout.Droid
         private static RightExpression ParseRightExpression(Expression expr, RelativeLayout relativeLayout)
         {
             Position? position = null;
-            MemberExpression memberExpression = null;
+            Expression memberExpression = null;
             int? constant = null;
 
             if (expr.NodeType == ExpressionType.Add || expr.NodeType == ExpressionType.Subtract)
@@ -397,15 +397,15 @@ namespace EasyLayout.Droid
 
                 position = GetPosition(memExpr);
 
-                memberExpression = memExpr.Expression as MemberExpression;
-                if (memberExpression == null)
+                memberExpression = memExpr.Expression;
+                if (memExpr.Expression == null)
                 {
                     throw new NotSupportedException("Constraints should use views's Top, Bottom, etc properties, or extension methods like GetCenter().");
                 }
             }
 
             View view = GetView(memberExpression);
-            var memberName = memberExpression?.Member.Name;
+            var memberName = GetName(memberExpression);
             var isParent = view == relativeLayout;
 
             if (view != null && !isParent && view.Id == -1)
@@ -423,7 +423,14 @@ namespace EasyLayout.Droid
             };
         }
 
-        private static View GetView(MemberExpression viewExpr)
+        private static string GetName(Expression expression)
+        {
+            var memberExpression = expression as MemberExpression;
+            if (memberExpression != null) return memberExpression.Member.Name;
+            return expression.ToString();
+        }
+
+        private static View GetView(Expression viewExpr)
         {
             if (viewExpr == null) return null;
             var eval = Eval(viewExpr);
