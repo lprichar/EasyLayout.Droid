@@ -9,11 +9,11 @@ using EasyLayout.Droid.Sample.Models;
 namespace EasyLayout.Droid.Sample
 {
     [Activity]
-    public class MyListActivity : Activity
+    public class ViewProductsActivity : Activity
     {
         private RelativeLayout _relativeLayout;
         private ListView _listView;
-        private MyAdapter _adapter;
+        private ProductAdapter _adapter;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -29,7 +29,7 @@ namespace EasyLayout.Droid.Sample
             _relativeLayout = ViewUtils.AddRelativeLayout(this);
             _listView = _relativeLayout.Add<ListView>();
             List<Product> items = GetItems();
-            _adapter = new MyAdapter(this, items);
+            _adapter = new ProductAdapter(this, items);
             _listView.Adapter = _adapter;
         }
 
@@ -61,12 +61,12 @@ namespace EasyLayout.Droid.Sample
 
     }
 
-    internal class MyAdapter : BaseAdapter<Product>
+    internal class ProductAdapter : BaseAdapter<Product>
     {
         private readonly Context _context;
         private readonly List<Product> _items;
 
-        public MyAdapter(Context context, List<Product> items)
+        public ProductAdapter(Context context, List<Product> items)
         {
             _context = context;
             _items = items;

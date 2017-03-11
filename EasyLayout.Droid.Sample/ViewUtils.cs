@@ -26,7 +26,14 @@ namespace EasyLayout.Droid.Sample
             return child;
         }
 
-        public static TextView AddTextView(this ViewGroup parent, Context context, string text, Color background, Color textColor)
+        public static Button AddButton(this ViewGroup parent, string text)
+        {
+            var button = parent.Add<Button>();
+            button.Text = text;
+            return button;
+        }
+
+        public static TextView AddTextView(this ViewGroup parent, string text, Color background, Color textColor)
         {
             var textView = parent.Add<TextView>();
             textView.Text = text;
