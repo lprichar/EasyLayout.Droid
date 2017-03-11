@@ -19,16 +19,16 @@ namespace EasyLayout.Droid.Sample
             return relativeLayout;
         }
 
-        public static T Add<T>(this ViewGroup parent, Context context) where T : View
+        public static T Add<T>(this ViewGroup parent) where T : View
         {
-            var child = (T)Activator.CreateInstance(typeof(T), context);
+            var child = (T)Activator.CreateInstance(typeof(T), parent.Context);
             parent.AddView(child);
             return child;
         }
 
         public static TextView AddTextView(this ViewGroup parent, Context context, string text, Color background, Color textColor)
         {
-            var textView = parent.Add<TextView>(context);
+            var textView = parent.Add<TextView>();
             textView.Text = text;
             textView.SetBackgroundColor(background);
             textView.SetTextColor(textColor);

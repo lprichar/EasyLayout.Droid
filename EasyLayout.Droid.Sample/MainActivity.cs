@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Widget;
 using Android.OS;
 
@@ -28,6 +29,33 @@ namespace EasyLayout.Droid.Sample
             AddViews();
             ConstrainLayout();
             SetContentView(_relativeLayout);
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            _center.Click += CenterOnClick;
+        }
+
+        private void CenterOnClick(object sender, EventArgs eventArgs)
+        {
+            StartActivity(typeof(MyListActivity));
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            UnsubscribeEvents();
+        }
+
+        private void UnsubscribeEvents()
+        {
+            _center.Click -= CenterOnClick;
         }
 
         private void AddViews()
