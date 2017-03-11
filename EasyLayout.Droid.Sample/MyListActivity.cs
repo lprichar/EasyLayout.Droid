@@ -77,15 +77,12 @@ namespace EasyLayout.Droid.Sample
 
         public override Product this[int position] => _items[position];
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View GetView(int position, View view, ViewGroup parent)
         {
-            if (convertView == null)
-            {
-                convertView = new ProductRowView(_context);
-            }
+            var productRowView = view as ProductRowView ?? new ProductRowView(_context);
             var product = _items[position];
-            ((ProductRowView) convertView).Update(product);
-            return convertView;
+            productRowView.Update(product);
+            return productRowView;
         }
 
     }
