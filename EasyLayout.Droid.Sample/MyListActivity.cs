@@ -27,7 +27,7 @@ namespace EasyLayout.Droid.Sample
         {
             _relativeLayout = ViewUtils.AddRelativeLayout(this);
             _listView = _relativeLayout.Add<ListView>();
-            List<Item> items = GetItems();
+            List<Product> items = GetItems();
             _adapter = new MyAdapter(this, items);
             _listView.Adapter = _adapter;
         }
@@ -42,12 +42,12 @@ namespace EasyLayout.Droid.Sample
                 );
         }
 
-        private List<Item> GetItems()
+        private List<Product> GetItems()
         {
-            var list = new List<Item>();
+            var list = new List<Product>();
             for (int i = 0; i < 100; i++)
             {
-                var item = new Item
+                var item = new Product
                 {
                     Id = i,
                     Title = $"Item #{i}",
@@ -60,12 +60,12 @@ namespace EasyLayout.Droid.Sample
 
     }
 
-    internal class MyAdapter : BaseAdapter<Item>
+    internal class MyAdapter : BaseAdapter<Product>
     {
         private readonly Context _context;
-        private readonly List<Item> _items;
+        private readonly List<Product> _items;
 
-        public MyAdapter(Context context, List<Item> items)
+        public MyAdapter(Context context, List<Product> items)
         {
             _context = context;
             _items = items;
@@ -75,20 +75,72 @@ namespace EasyLayout.Droid.Sample
 
         public override int Count => _items.Count;
 
-        public override Item this[int position] => _items[position];
+        public override Product this[int position] => _items[position];
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var textView = new TextView(_context)
+            if (convertView == null)
             {
-                Text = _items[position].Title
-            };
-            return textView;
+                convertView = new ProductRowView(_context);
+            }
+            var product = _items[position];
+            ((ProductRowView) convertView).Update(product);
+            return convertView;
         }
 
     }
 
-    public class Item
+    public class ProductRowView : RelativeLayout
+    {
+        private TextView _titleText;
+        private TextView _dollarText;
+        private TextView _amountText;
+
+        public ProductRowView(Context context) : base(context)
+        {
+            AddViews();
+            ConstrainLayout(this);
+        }
+
+        private void AddViews()
+        {
+            _titleText = this.Add<TextView>();
+            _dollarText = AddDollarText(this);
+            _amountText = this.Add<TextView>();
+        }
+
+        private static TextView AddDollarText(ViewGroup parent)
+        {
+            var dollarText = parent.Add<TextView>();
+            dollarText.Text = "$";
+            dollarText.TextSize = 8;
+            return dollarText;
+        }
+
+        private void ConstrainLayout(RelativeLayout relativeLayout)
+        {
+            relativeLayout.ConstrainLayout(() =>
+                _titleText.Left == relativeLayout.Left
+                && _titleText.Top == relativeLayout.Top
+                && _titleText.Bottom == relativeLayout.Bottom
+
+                && _amountText.Right == relativeLayout.Right
+                && _amountText.Top == relativeLayout.Top
+                && _amountText.Bottom == relativeLayout.Bottom
+
+                && _dollarText.Right == _amountText.Left
+                && _dollarText.Top == _amountText.Top
+            );
+        }
+
+        public void Update(Product product)
+        {
+            _titleText.Text = product.Title;
+            _amountText.Text = product.Amount.ToString("0.00");
+        }
+    }
+
+    public class Product
     {
         public string Title { get; set; }
         public decimal Amount { get; set; }
