@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Widget;
 using Android.OS;
+using EasyLayout.Droid.Sample.Models;
 
 namespace EasyLayout.Droid.Sample
 {

@@ -1,4 +1,4 @@
-namespace EasyLayout.Droid.Sample
+namespace EasyLayout.Droid.Sample.Models
 {
     public class MainViewModel
     {

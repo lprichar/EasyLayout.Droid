@@ -4,6 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using EasyLayout.Droid.Sample.Models;
 
 namespace EasyLayout.Droid.Sample
 {
@@ -79,7 +80,8 @@ namespace EasyLayout.Droid.Sample
 
         public override View GetView(int position, View view, ViewGroup parent)
         {
-            var productRowView = view as ProductRowView ?? new ProductRowView(_context);
+            var productRowView = view as ProductRowView ?? 
+                new ProductRowView(_context);
             var product = _items[position];
             productRowView.Update(product);
             return productRowView;
@@ -135,12 +137,5 @@ namespace EasyLayout.Droid.Sample
             _titleText.Text = product.Title;
             _amountText.Text = product.Amount.ToString("0.00");
         }
-    }
-
-    public class Product
-    {
-        public string Title { get; set; }
-        public decimal Amount { get; set; }
-        public int Id { get; set; }
     }
 }
