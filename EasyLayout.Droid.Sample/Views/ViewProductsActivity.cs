@@ -19,9 +19,15 @@ namespace EasyLayout.Droid.Sample
         {
             base.OnCreate(bundle);
 
+            SetPageProperties();
             AddViews();
             ConstrainLayout();
             SetContentView(_relativeLayout);
+        }
+
+        private void SetPageProperties()
+        {
+            Title = "Products ListView";
         }
 
         private void AddViews()
@@ -120,7 +126,7 @@ namespace EasyLayout.Droid.Sample
                 && _amountText.Right == Right - 20
                 && _amountText.Top == Top + 10
 
-                && _dollarText.Right == _amountText.Left
+                && _dollarText.Right == _amountText.Left - 2
                 && _dollarText.Top == _amountText.Top
             );
         }

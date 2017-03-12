@@ -94,6 +94,12 @@ relativeLayout.ConstrainLayout(() =>
 
 As mentioned previously 50 will be assumed to be in dp and will be auto-converted to pixels.  Also arbitrary properties such as SomeHeight will need the .ToConst() extension method applied in order to tell EasyLayout.Droid that they should be treated as constants.
 
+## Example 4 - ListView's
+
+Displaying list data in Android using a custom layout is traditionally accomplished by inflating an AXML file for each row of data.
+
+Check out the [ViewProductsActivity.cs](https://github.com/lprichar/EasyLayout.Droid/blob/master/EasyLayout.Droid.Sample/Views/ViewProductsActivity.cs) example or [this blog post](http://www.leerichardson.com/2017/03/kill-axml-programmatic-listviews-in.html) for how to build custom lists without AXML files.
+
 ## Installation
 
 If you want to add this to your project you can either [install via NuGet](https://www.nuget.org/packages/EasyLayout.Droid/) (safer):
