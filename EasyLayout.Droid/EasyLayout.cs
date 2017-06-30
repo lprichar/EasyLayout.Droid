@@ -165,9 +165,9 @@ namespace EasyLayout.Droid
                 if (leftPosition == Position.Baseline && rightPosition == Position.Baseline)
                     return LayoutRules.AlignBaseline;
                 if (leftPosition == Position.Width && rightPosition == Position.Width)
-                    throw new ArgumentException("Unfortunatly Android's relative layout isn't sophisticated enough to allow constraining widths.  You might be able to achieve the same result by constraining Left's and Right's.");
+                    throw new ArgumentException("Unfortunately Android's relative layout isn't sophisticated enough to allow constraining the width of one view to the width of another.  Maybe try extracting several widths into a shared constant.");
                 if (leftPosition == Position.Height && rightPosition == Position.Height)
-                    throw new ArgumentException("Unfortunatly Android's relative layout isn't sophisticated enough to allow constraining heights.  You might be able to achieve the same result by constraining Top's and Bottom's.");
+                    throw new ArgumentException("Unfortunately Android's relative layout isn't sophisticated enough to allow constraining the height of one view to the height of another.  Maybe try extracting several heights into a shared constant.");
                 throw new ArgumentException($"Unsupported relative positioning combination: {leftExpressionName}.{leftPosition} with {rightExpressionName}.{rightPosition}");
             }
 
